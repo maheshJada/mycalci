@@ -1,1 +1,83 @@
-<p>body works!</p>
+
+
+
+
+<h1 >Calculator</h1>
+        <div class="row">
+          <div class="col-9">
+            <div class="container w-75">
+              <div style="margin:10px;height:75px" >
+                <!-- {this.state.error ? (
+                  <h1>{this.state.error}</h1>
+                ) : (
+                  <>
+                    <h2>{this.state.display1}</h2>
+                    <h2 style="float: right" }}>{this.state.display2}</h2>
+                  </>
+                )} -->
+              </div>
+
+              <div class="first-row">
+                <input
+                  type="button"
+                  name=""
+                  value="Del"
+                  class=" red small white-text top-margin"
+                
+                />
+                <input
+                  type="button"
+                  name=""
+                  value="Clear"
+                  class=" red small white-text "
+                  style="margin-top:4px" 
+                  
+                />
+              </div>
+              <div class="col-12">
+                <!-- {allVal.map((btn,index) => (
+                  <input key={index}
+                    type="button"
+                    name=""
+                    value={btn.val}
+                    class="global"
+                    onClick={(e) =>
+                      btn.id === "operand"
+                        ? this.handleOperand(e.target.value)
+                        : this.handleOperator(e.target.value)
+                    }
+                  />
+                ))} -->
+              <div *ngFor="let btn of allVal">
+                <input 
+                type="button"
+                name=""
+                [value]="btn.val"
+                class="global"
+               
+              />
+              </div>
+               
+              </div>
+              <div>
+                <div>
+                  <input
+                    type="button"
+                    name=""
+                    value="="
+                    class="green small"
+                    
+                  />
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- <div class="col-3">
+            HISTORY:
+            {this.state.history.map((historyData) => (
+              <h4>{historyData}</h4>
+            ))}
+          </div> -->
+        </div>
+
