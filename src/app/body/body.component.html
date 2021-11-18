@@ -1,20 +1,12 @@
-
-
-
-
 <h1 >Calculator</h1>
         <div class="row">
           <div class="col-9">
             <div class="container w-75">
               <div style="margin:10px;height:75px" >
-                <!-- {this.state.error ? (
-                  <h1>{this.state.error}</h1>
-                ) : (
-                  <>
-                    <h2>{this.state.display1}</h2>
-                    <h2 style="float: right" }}>{this.state.display2}</h2>
-                  </>
-                )} -->
+                
+                <h1 *ngIf='state.error'>{{state.error}}</h1>
+                <h2 *ngIf='!state.error'>{{state.display1}}</h2>
+                <h2 style="float: right" *ngIf='!state.error'>{{state.display2}}</h2>
               </div>
 
               <div class="first-row">
@@ -23,7 +15,7 @@
                   name=""
                   value="Del"
                   class=" red small white-text top-margin"
-                
+                  (click)="handleDelete()"
                 />
                 <input
                   type="button"
@@ -31,30 +23,18 @@
                   value="Clear"
                   class=" red small white-text "
                   style="margin-top:4px" 
-                  
+                  (click)="handleclear()"
                 />
               </div>
               <div class="col-12">
-                <!-- {allVal.map((btn,index) => (
-                  <input key={index}
-                    type="button"
-                    name=""
-                    value={btn.val}
-                    class="global"
-                    onClick={(e) =>
-                      btn.id === "operand"
-                        ? this.handleOperand(e.target.value)
-                        : this.handleOperator(e.target.value)
-                    }
-                  />
-                ))} -->
+                
               <div *ngFor="let btn of allVal">
                 <input 
                 type="button"
                 name=""
                 [value]="btn.val"
                 class="global"
-               
+                (click)="btn.id==='operand'?handleOperand($event):handleOperator($event)"
               />
               </div>
                
@@ -66,18 +46,18 @@
                     name=""
                     value="="
                     class="green small"
-                    
+                    (click)="getFinalRes()"
                   />
                 </div>
               </div>
             </div>
           </div>
 
-          <!-- <div class="col-3">
-            HISTORY:
-            {this.state.history.map((historyData) => (
-              <h4>{historyData}</h4>
-            ))}
-          </div> -->
+          <div class="col-3">
+            <h2>HISTORY:</h2><br/>
+           
+              <h4 *ngFor="let h of state.history">{{h}}</h4>
+           
+          </div>
+         
         </div>
-
