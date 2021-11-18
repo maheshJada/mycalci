@@ -5,7 +5,11 @@ import { Component, OnInit } from '@angular/core';
   templateUrl: './body.component.html',
   styleUrls: ['./body.component.css']
 })
-export class BodyComponent implements OnInit {
+export class BodyComponent implements OnInit
+/**
+ * State variable will represnt properties what we are used
+ */
+{
   state={
     history:[] as any,
     operand1:"" as any,
@@ -19,7 +23,14 @@ export class BodyComponent implements OnInit {
     error : "" as any
 
   }
-  
+  /**
+   * @param {*} event
+   * @description handleOperand function it is a logic for the calculator
+   * Here i wrote the logic for  the operand values not more than 10
+   * The Entered first one is operand1 and next one is operand2  and check if it is operand or operator
+   *  if it is valid then execute the what oprtaions we did.if it is not satisafy it will give a error
+   * @returns It will not return anything
+   */
   handleOperand = (event:any) => {
     let value = event.target.value;
     if (this.state.isOperator) {
@@ -48,7 +59,11 @@ export class BodyComponent implements OnInit {
       console.log(this.state)
     }
   };
-
+/**
+ * @param {*} event
+ * @description it will check the operator 
+ *@returns it will not return anything
+ */
   handleOperator = (event: any) => {
     let value = event.target.value;
     if (this.state.finalOperand1) {
@@ -73,6 +88,11 @@ export class BodyComponent implements OnInit {
   };
     
 
+  /**
+   * @description it will displaay the history what i did in calcultor
+   * add both operand1 and operand2
+   * @returns it will return what i did the opertions like +,-,*...
+   */
   getFinalRes = () => {
     if (this.state.operand1 && this.state.operand2) {
       var historyArray: String[];
@@ -112,6 +132,10 @@ export class BodyComponent implements OnInit {
       }
     }
   };
+
+  /**
+   * In this we are clear the operand and make it as null
+   */
   handleclear = () => {
     console.log(this.state);
     (this.state.operand1 = ''),
@@ -124,6 +148,10 @@ export class BodyComponent implements OnInit {
       (this.state.display2 = ''),
       (this.state.error = '');
   };
+
+   /**
+   * In this we are delete what we are entered in bodycomponent
+   */
   handleDelete = () => {
     if (this.state.isOperator) {
       let str = String(this.state.finalOperand2).slice(0, -1);
@@ -143,7 +171,9 @@ export class BodyComponent implements OnInit {
         (this.state.operand1 = str);
     }
   };
-  
+  /**
+   * allval will represent the operand operator  values declarion
+   */
    allVal = [
     { id: "operand", val: "7" },
     { id: "operand", val: "8" },
